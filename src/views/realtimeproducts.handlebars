@@ -1,0 +1,60 @@
+<form id="formProduct">
+    <div class="title-add-product">
+        <h2 class="title-add">Agregar Productos</h2>
+    </div>
+    <div class="name-desc">
+        <div class="name-product">
+            <p>Nombre</p>
+            <input class="controls" type="text" name="title" id="title" placeholder="Ingrese Nombre del Producto"
+                required>
+        </div>
+        <div class="desc-product">
+            <p>Descripcion del Producto</p>
+            <input class="controls" type="text" name="description" id="description" placeholder="Ingrese description"
+                required>
+        </div>
+    </div>
+    <div class="stock-code-price">
+        <div class="stock-product">
+            <p>Stock</p>
+            <input class="controls" type="number" min="0" name="stock" id="stock" placeholder="Ingrese su stock" required>
+        </div>
+        <div class="code-product">
+            <p>Codigo</p>
+            <input class="controls" type="text" name="code" id="code" placeholder="Ingrese su code" required>
+        </div>
+        <div class="price-product">
+            <p>Precio</p>
+            <input class="controls" type="number"  min="0" name="price" id="price" placeholder="Ingrese su precio" required>
+        </div>
+        <div class="category-product">
+            <p>categoria</p>
+            <input class="controls" type="text" name="category" id="category" placeholder="Ingrese categoria" required>
+        </div>
+    </div>
+    
+    <div class="url-product">
+        <p>Imagen</p>
+        <input class="controls" type="text" name="thumbnail" id="thumbnail" placeholder="Ingrese la url de su imagen"
+            required>
+    </div>
+    <div class="button-reg">
+        <button class="botons" type="submit" id="add-btn">Registrar Producto</button>
+    </div>
+    <div class="delete-product">
+        <h3> Para eliminar un producto:</h3>
+    </div>
+    <div class="id-product">
+        <input class="controls" type="text" name="id-prod" id="id-prod" placeholder="Ingrese ID">
+    </div>
+    <div class="delete-button">
+        <button class="botons" type="button" id="delete-btn">Eliminar</button>
+    </div>
+</form>
+
+
+<article id="list-products">
+</article>
+
+<script src="/socket.io/socket.io.js" defer></script>
+<script src="/js/realtime.js" defer></script>
