@@ -96,6 +96,11 @@ class CartManager {
         }
     };
 
+    removeallProductFromCart = async(cartId) =>{
+        const cart = await cartModel.findById(cartId)
+        cart.products = [];
+        await cart.save();
+    }
 
     removeProductFromCart = async (cartId, productId) => {
         try {

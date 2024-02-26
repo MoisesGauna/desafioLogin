@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
         let itemsPorPage = parseInt(req.query.limit) || 10;
         let sortByPrice = req.query.sort === 'asc' ? 'price' : req.query.sort === 'desc' ? '-price' : null;
         let category = req.query.category ? { category: req.query.category } : {};
-        console.log(category)
+        
 
         const query = {};
 
@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 
         products.page = products.page;
         products.totalPages = products.totalPages;
-
+        console.log(products)
         res.render('home', products);
     } catch (error) {
         console.log('Error al leer los productos', error);
@@ -57,6 +57,20 @@ router.get("/cart", async (req, res) => {
     const productList = Object.values(productsInCart.products)
     res.render("partials/cart", { productList })
 })
+
+router.delete('/empty-cart', async (req, res) => {
+    try {
+        // Lógica para vaciar completamente el carrito
+        const cartId = "65c28522c1483aaada1fb25c"; // ID del carrito a vaciar
+
+        const cart = await cmanager.removeallProductFromCart(cartId);
+
+        res.status(200).json({ message: 'Carrito vaciado exitosamente' });
+    } catch (error) {
+        console.error('Error al vaciar el carrito:', error);
+        res.status(500).json({ error: 'Error al vaciar el carrito' });
+    }
+});
 
 
 
