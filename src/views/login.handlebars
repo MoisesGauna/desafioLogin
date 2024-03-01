@@ -1,0 +1,35 @@
+<div class="banner-productos">
+        <div class="navbar">
+            <img src="/images/.jpg" alt="" class="logo">
+        </div>
+</div>
+
+<div class="container login">
+    
+    <form id="login-form" action="/login" method="POST">
+        <div class="mb-3"> 
+            <label for="exampleInputUsername" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="exampleInputUsername" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        <button class="btn btn-primary"><a href="/register">Registrate</a></button>
+    </form>
+    {{#if error}}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    {{/if}}
+</div>
+
+
+
+
+<footer>
+    {{>footer}}
+</footer>
+
+

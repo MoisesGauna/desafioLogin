@@ -1,0 +1,36 @@
+<div class="banner-productos">
+        <div class="navbar">
+            <img src="/images/.jpg" alt="" class="logo">
+        </div>
+</div>
+
+<div class="container register">
+    <form action="/register" method="POST">
+        <div class="mb-3"> 
+            <label for="exampleInputUsername" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="exampleInputUsername" name="username">
+        </div>
+        <div class="mb-3"> 
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+            <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Registrate</button>
+        <button  class="btn btn-primary"><a href="/login">Iniciar sesión</a></button>
+    </form>
+    {{#if error}}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    {{/if}}
+</div>
+
+
+
+<footer>
+    {{>footer}}
+</footer>
