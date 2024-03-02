@@ -113,6 +113,10 @@ body {
     margin: 15px;
 }
 
+
+
+
+
 .category-product {
     margin: 15px;
 }
@@ -200,6 +204,9 @@ body {
     font-size: 16px;
 }
 
+.titulo-products h1{
+    color: aqua;
+}
 
 /* --------------productDetail-------- */
 .product-detail {
@@ -367,7 +374,12 @@ button:hover {
 
 /* -----------------------------newhome---------------------------------------- */
 /* --------------filtros-------- */
-
+.saludo-bienvenida h2{
+    color:aqua;
+}
+.saludo-bienvenida h4{
+    color:aqua;
+}
 
 .filters {
     display: flex;

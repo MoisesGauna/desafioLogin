@@ -73,7 +73,7 @@ document.querySelectorAll('#filtrar').forEach(button => {
         document.querySelectorAll('#filtrar').forEach(button => {
             button.addEventListener('click', function (event) {
                 const selectedCategory = document.getElementById('categorySelect').value;
-                let newUrl = `/?category=${selectedCategory}`;
+                let newUrl = `?category=${selectedCategory}`;
                 console.log(newUrl);
                 window.location.href = newUrl;
             });
@@ -82,7 +82,7 @@ document.querySelectorAll('#filtrar').forEach(button => {
         document.getElementById('sortForm').addEventListener('click', (event) => {
             const selectedSort = document.querySelector('input[name="exampleRadios"]:checked').value;
             const selectedCategory = document.getElementById('categorySelect').value;
-            let newUrl = `/?sort=${selectedSort}&category=${selectedCategory}`;
+            let newUrl = `?sort=${selectedSort}&category=${selectedCategory}`;
             console.log(newUrl);
             window.location.href = newUrl;
         });

@@ -16,13 +16,14 @@ import MongoStore from 'connect-mongo'
 
 
 const app=express()
+app.use(express.static(__dirname+"/public"))
 
 app.use(cookieParser("CoderCookie"))
 app.use(session({
     store: MongoStore.create({
         mongoUrl:"mongodb+srv://moisesagauna:admin123@cluster0.tkrlcyj.mongodb.net/?retryWrites=true&w=majority",
         mongoOptions:{useNewUrlParser:true,useUnifiedTopology:true},
-        ttl:12*60*60
+        ttl:3*60*60
     }),
     secret:"SecretKey",
     resave: true,
@@ -35,7 +36,7 @@ const PORT=process.env.PORT||8080;
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(express.static(__dirname+"/public"))
+
 
 app.engine("handlebars",handlebars.engine())
 app.set('view engine', 'handlebars');

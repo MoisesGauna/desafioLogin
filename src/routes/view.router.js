@@ -5,6 +5,9 @@ import CartManager from '../dao/mongomanagers/cartManagerMongo.js';
 import { productsModel } from '../dao/models/products.model.js';
 import { requireAuth, isAdmin } from "../config/authMiddleware.js"
 import userManager from "../dao/mongomanagers/userManagerMongo.js";
+import express from 'express';
+
+import path from 'path';
 
 const cmanager = new CartManager();
 const pmanager = new ProductManager()
@@ -20,6 +23,8 @@ const setUserInLocals = (req, res, next) => {
 
 // Usar el middleware en todas las rutas
 router.use(setUserInLocals);
+
+router.use('/productos', express.static(path.join(__dirname, 'public')));
 
 
 
@@ -48,16 +53,16 @@ router.post('/register', async (req, res) => {
         req.session.user = newUser;
 
         console.log(newUser);
-        res.redirect('/productos');
+        res.redirect('/login');
     } catch (error) {
         if (error.message === 'Email already in use') {
             // Manejar el caso en el que el correo electrónico ya está en uso
             console.log('El correo electrónico ya está en uso' , error);
-            res.render('login', { error: 'El correo electrónico ya está en uso'});
+            res.render('register', { error: 'El correo electrónico ya está en uso'});
         } else {
             // Manejar otros errores
             console.log('Error al registrar usuario:', error);
-            res.render('login', { error: 'Error al registrar usuario' });
+            res.render('register', { error: 'Error al registrar usuario' });
         }
     }
 });
@@ -106,8 +111,8 @@ router.get("/productos", requireAuth, async (req, res) => {
 
         const products = await productsModel.paginate(category, { page: pageNum, limit: itemsPorPage, sort: query.sort, lean: true });
 
-        products.prevLink = products.hasPrevPage ? `/?limit=${itemsPorPage}&page=${products.prevPage}` : '';
-        products.nextLink = products.hasNextPage ? `/?limit=${itemsPorPage}&page=${products.nextPage}` : '';
+        products.prevLink = products.hasPrevPage ? `?limit=${itemsPorPage}&page=${products.prevPage}` : '';
+        products.nextLink = products.hasNextPage ? `?limit=${itemsPorPage}&page=${products.nextPage}` : '';
 
         products.page = products.page;
         products.totalPages = products.totalPages;
